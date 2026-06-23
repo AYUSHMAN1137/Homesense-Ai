@@ -3,6 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const errorHandler = require("./middleware/errorHandler");
 const healthRoutes = require("./routes/health");
+const reviewsRoutes = require("./routes/reviews");
 
 const app = express();
 
@@ -12,6 +13,7 @@ app.use(express.json());
 
 // Routes
 app.use("/api/health", healthRoutes);
+app.use("/api/reviews", reviewsRoutes);
 
 // Global error handler (must be last)
 app.use(errorHandler);
