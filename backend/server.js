@@ -9,8 +9,8 @@ const dashboardRoutes = require("./routes/dashboard");
 
 const app = express();
 
-// Middleware
-app.use(cors());
+// Middleware — allow all origins (required for frontend on :5173)
+app.use(cors({ origin: "*", methods: ["GET", "POST", "PUT", "PATCH", "DELETE"] }));
 app.use(express.json());
 
 // Routes

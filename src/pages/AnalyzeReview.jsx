@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { Button, Loader } from "../components/ui";
 
-const API = "http://localhost:5000";
+const API = "http://localhost:3001";
 
 export default function AnalyzeReview() {
   const [text, setText] = useState("");
