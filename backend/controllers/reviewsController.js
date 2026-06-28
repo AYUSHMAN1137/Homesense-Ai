@@ -1,5 +1,4 @@
 const store = require("../data/store");
-const { v4: uuid } = require("uuid");
 
 /**
  * GET /api/reviews
@@ -62,4 +61,17 @@ function deleteReview(req, res) {
   return res.json({ ok: true, message: "Review deleted successfully." });
 }
 
-module.exports = { getReviews, getReview, createReview, deleteReview };
+/**
+ * GET /api/reviews/search?q=
+ * Searches reviews by text, platform, or themes. Case-insensitive.
+ */
+function searchReviews(req, res) {
+  const { q } = req.query;
+  if (!q || !q.trim()) {
+    return res.status(400).json({ error: "Query parameter 'q' is required." });
+  }
+  const results = store.search(q.trim());
+  return res.json(results);
+}
+
+module.exports = { getReviews, getReview, createReview, deleteReview, searchReviews };

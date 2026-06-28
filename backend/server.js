@@ -4,6 +4,7 @@ const cors = require("cors");
 const errorHandler = require("./middleware/errorHandler");
 const healthRoutes = require("./routes/health");
 const reviewsRoutes = require("./routes/reviews");
+const analyzeRoutes = require("./routes/analyze");
 
 const app = express();
 
@@ -14,6 +15,7 @@ app.use(express.json());
 // Routes
 app.use("/api/health", healthRoutes);
 app.use("/api/reviews", reviewsRoutes);
+app.use("/api/analyze", analyzeRoutes);
 
 // Global error handler (must be last)
 app.use(errorHandler);
